@@ -15,7 +15,7 @@ exports.getItemByDate = catchAsync(async (req, res, next) => {
     {
       $group: {
         _id: { dailyDate: "$dailyDate" },
-        allMovedCylinder: { $sum: "$filledIn" },
+        allMovedCylinder: { $sum: "$rate" },
       },
     },
   ]);

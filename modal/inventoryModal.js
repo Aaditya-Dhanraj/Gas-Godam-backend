@@ -3,8 +3,9 @@ const User = require("./userModal");
 
 const storeSchema = new mongoose.Schema(
   {
-    name: {
-      type: String,
+    exportEmpty: {
+      type: Number,
+      default: 0,
       required: [true, "Please provide name"],
     },
     showRoomName: {
@@ -23,10 +24,22 @@ const storeSchema = new mongoose.Schema(
     ],
     dailyDiscription: {
       type: String,
+      default: "N/A",
     },
-    filledQuantity: {
+    filledQuantityInitial: {
       type: Number,
+      default: 0,
       required: [true, "Please provide quantity"],
+    },
+    filledQuantityFinal: {
+      type: Number,
+      default: 0,
+      required: [true, "Please provide quantity"],
+    },
+    rate: {
+      type: Number,
+      default: 889.50,
+      required: [true, "Please provide rate"],
     },
     purchasedTypeSBC: {
       type: Number,
@@ -43,7 +56,12 @@ const storeSchema = new mongoose.Schema(
       default: 0,
       required: [true, "Purchase type must be defined"],
     },
-    emptyQuantity: {
+    emptyQuantityInitial: {
+      type: Number,
+      required: [true, "Please provide final quantity"],
+      default: 0,
+    },
+    emptyQuantityFinal: {
       type: Number,
       required: [true, "Please provide final quantity"],
       default: 0,
@@ -52,19 +70,27 @@ const storeSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-    emptyOut: {
+    filledOut: {
       type: Number,
       default: 0,
     },
-    moneyTypeCashQuantity: {
+    totalEmpty: {
       type: Number,
       default: 0,
     },
-    moneyTypeOnlineQuantity: {
+    emptyIn: {
       type: Number,
       default: 0,
     },
-    moneyTypeCash: {
+    initialTotal: {
+      type: Number,
+      default: 0,
+    },
+    total: {
+      type: Number,
+      default: 0,
+    },
+    totalPayment: {
       type: Number,
       default: 0,
     },
@@ -82,7 +108,22 @@ const storeSchema = new mongoose.Schema(
     },
     expenseDescription: {
       type: String,
+      default: "N/A",
     },
+    SVSBC: {
+      type: Number,
+      default: 0,
+    },
+    SVDBC: {
+      type: Number,
+      default: 0,
+    },
+    SVToDBC: {
+      type: Number,
+      default: 0,
+    },
+    
+
   },
   {
     toJSON: { virtuals: true },

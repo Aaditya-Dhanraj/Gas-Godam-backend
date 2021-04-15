@@ -10,10 +10,8 @@ process.on("uncaughtException", (err) => {
 
 dotenv.config({ path: "./config.env" });
 
-const DB = process.env.DATABASE.replace(
-  "<PASSWORD>",
-  process.env.DATABASE_PASSWORD
-);
+const DB =
+  "mongodb+srv://aaditya:adityaROCKS552.@cluster0.s2rn4.mongodb.net/aaditya?retryWrites=true&w=majority";
 
 mongoose
   .connect(DB, {

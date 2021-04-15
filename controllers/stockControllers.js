@@ -14,9 +14,14 @@ exports.getItemByDate = catchAsync(async (req, res, next) => {
   const groupedDate = await Store.aggregate([
     {
       $group: {
-        _id: { dailyDate: "$dailyDate" },
-        allMovedCylinder: { $sum: "$rate" },
+        _id: {
+          dailyDate: "$dailyDate",
+        },
+        addRate: { $avg: "$rate" },
       },
+    },
+    {
+      $sort: { _id: -1 },
     },
   ]);
   res.status(200).json({

@@ -38,7 +38,7 @@ const storeSchema = new mongoose.Schema(
     },
     rate: {
       type: Number,
-      default: 889.50,
+      default: 889.5,
       required: [true, "Please provide rate"],
     },
     purchasedTypeSBC: {
@@ -122,8 +122,6 @@ const storeSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-    
-
   },
   {
     toJSON: { virtuals: true },
